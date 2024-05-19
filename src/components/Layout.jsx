@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Layout() {
+
+  const [title, setTitle] = useState("Home") 
+
   return (
     <LayoutContainer>
       <Header>
@@ -13,9 +16,10 @@ function Layout() {
             <li><a href="/solicitar-tramite">Solicitar trámite</a></li>
           </ul>
         </nav>
+        <h2>{title}</h2>
       </Header>
       <main>
-        <Outlet />
+        <Outlet context={{ setTitle }}/>
       </main>
     </LayoutContainer>
   );
@@ -32,6 +36,7 @@ const LayoutContainer = styled.div`
 `
 
 const Header = styled.header`
+    position: relative;
     width: calc(100% - 2rem);
     height: 100px;
     background-color: #166C88;
@@ -63,7 +68,17 @@ const Header = styled.header`
         text-decoration: none;
         color: #DDEFFA;
         font-size: 1.2rem;
+    }
 
-        
+    h2 {
+      position: absolute;
+      left: 0; 
+      right: 0; 
+      margin-left: auto; 
+      margin-right: auto; 
+      width: fit-content;
+      text-align: center;
+      font-size: 48px;
+      color: #C5EDFA;
     }
 `
