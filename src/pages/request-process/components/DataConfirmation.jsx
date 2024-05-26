@@ -2,7 +2,14 @@ import styled from "styled-components";
 import { Button } from "../../../styled-components/Buttons";
 import { Icon } from "@iconify/react";
 
-const DataConfirmation = ({ prevStage, nextStage }) => {
+const DataConfirmation = ({ prevStage, nextStage, user }) => {
+
+    const parseToCUIL = (CUIL) => {
+
+        const parsed = parseInt(CUIL).toString().replace(/(\d{2})(\d{8})(\d{1})/, "$1-$2-$3");
+
+        return parsed;
+    }
 
     return (
         <Container>
@@ -13,21 +20,21 @@ const DataConfirmation = ({ prevStage, nextStage }) => {
                         <Icon icon="wpf:name" width="1rem" height="1rem" />
                         <b>Nombre:</b>
                     </div>
-                    <p>Agustina García</p>
+                    <p>{user?.name}</p>
                 </DataItem>
                 <DataItem>
                     <div>
                         <Icon icon="teenyicons:id-solid" width="1rem" height="1rem" />
                         <b>CUIL:</b>
                     </div>
-                    <p>20-44246942-4</p>
+                    <p>{parseToCUIL(user?.CUIL)}</p>
                 </DataItem>
                 <DataItem>
                     <div>
                         <Icon icon="mdi:address-marker" width="1rem" height="1rem" />
                         <b>Dirección:</b>
                     </div>
-                    <p>Paso de los Andes 262, Mendoza</p>
+                    <p>{user?.address}</p>
                 </DataItem>
             </DataContainer>
             <ButtonsContainer>
