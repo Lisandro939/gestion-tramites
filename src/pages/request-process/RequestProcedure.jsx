@@ -2,7 +2,7 @@ import { styled } from 'styled-components'
 import { useOutletContext } from "react-router-dom";
 import { createContext } from 'react';
 import { useStage } from './hooks/useStage';
-import IdentityValidation from './components/IdentityValidation';
+import IdentityValidation from './components/identityValidation/IdentityValidation';
 import DataConfirmation from './components/DataConfirmation';
 import CategorySelection from './components/CategorySelection';
 import TypeOfProcedure from './components/TypeOfProcedure';
@@ -12,7 +12,7 @@ export const StageContext = createContext();
 
 const RequestProcedure = () => {
 
-    const { activeStage, setActiveStage, stages, nextStage, prevStage } = useStage();
+    const { activeStage, setActiveStage, stages, nextStage, prevStage, user, setUser } = useStage();
 
     const { setTitle } = useOutletContext();
 
@@ -40,10 +40,10 @@ const RequestProcedure = () => {
                     }
                 </StatesContainer>
                 {
-                    activeStage === 1 && <IdentityValidation nextStage={nextStage} />
+                    activeStage === 1 && <IdentityValidation nextStage={nextStage} setUser={setUser}/>
                 }
                 {
-                    activeStage === 2 && <DataConfirmation nextStage={nextStage} prevStage={prevStage} />
+                    activeStage === 2 && <DataConfirmation nextStage={nextStage} prevStage={prevStage} user={user} />
                 }
                 {
                     activeStage === 3 && <CategorySelection nextStage={nextStage} prevStage={prevStage} />
