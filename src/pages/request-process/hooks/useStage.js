@@ -3,6 +3,7 @@ import React, { useState } from "react"
 export const useStage = () => {
 
     const [activeStage, setActiveStage] = useState(1);
+    const [user, setUser] = useState(false);
 
     const prevStage = () => {
         if (activeStage !== 1) {
@@ -14,7 +15,6 @@ export const useStage = () => {
         if (activeStage !== 5) {
             setActiveStage(activeStage + 1);
         }
-        console.log(activeStage)
     }
 
     const stages = [
@@ -42,9 +42,11 @@ export const useStage = () => {
 
     return {
         activeStage,
-        setActiveStage,
         stages,
+        user,
+        setActiveStage,
         nextStage,
-        prevStage
+        prevStage,
+        setUser
     }
 }
