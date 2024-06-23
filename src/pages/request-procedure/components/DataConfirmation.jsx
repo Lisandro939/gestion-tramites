@@ -27,7 +27,7 @@ const DataConfirmation = ({ prevStage, nextStage, user }) => {
                         <Icon icon="teenyicons:id-solid" width="1rem" height="1rem" />
                         <b>CUIL:</b>
                     </div>
-                    <p>{parseToCUIL(user?.CUIL)}</p>
+                    <p>{parseToCUIL(user?.cuit)}</p>
                 </DataItem>
                 <DataItem>
                     <div>

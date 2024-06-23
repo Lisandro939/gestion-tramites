@@ -16,7 +16,7 @@ const IdentityValidation = ({ nextStage, setUser }) => {
         await validateIdentity(CUIL)
         .then((response) => {
             if (response?.status !== "error") {
-                setUser(response?.user)
+                setUser(response)
                 setLoading(false)
                 setSuccess(true)
                 nextStage();
